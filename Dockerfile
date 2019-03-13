@@ -5,7 +5,7 @@ FROM microsoft/dotnet:2.2-aspnetcore-runtime as runtime-env
 WORKDIR /app
 EXPOSE 80
 HEALTHCHECK --interval=2s --timeout=30s --start-period=5s --retries=3 \
-    CMD ["curl --fail http://localhost/health || exit 1"]
+    CMD curl --fail http://localhost/health || exit 1
 
 FROM microsoft/dotnet:2.2-sdk as build-env
 ARG DOTNET_BUILD_CONFIGURATION=Release
